@@ -32,3 +32,23 @@ create table Customer_Order(o_id integer primary key ,
 					total_item integer ,
 					total_price double precision , 
 					payment_method varchar(50) );
+                    
+//DDL command for creating Shipment_order table
+
+CREATE TABLE IF NOT EXISTS public.order_shipment
+(
+    shipment_id integer NOT NULL,
+    o_id integer,
+    c_id integer,
+    dispatch_date date,
+    order_status character varying(50) COLLATE pg_catalog."default",
+    received_date date,
+    CONSTRAINT order_shipment_c_id_fkey FOREIGN KEY (c_id)
+        REFERENCES public.customer (c_id) MATCH SIMPLE
+        ON UPDATE NO ACTION
+        ON DELETE NO ACTION,
+    CONSTRAINT order_shipment_o_id_fkey FOREIGN KEY (o_id)
+        REFERENCES public.customer_order (o_id) MATCH SIMPLE
+        ON UPDATE NO ACTION
+        ON DELETE NO ACTION
+)
