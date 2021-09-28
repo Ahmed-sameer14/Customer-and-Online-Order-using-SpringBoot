@@ -1,54 +1,43 @@
 // DDL command for creating product table
 
-create table product(p_id integer primary key ,
-					p_name varchar(50) ,
-					p_discription varchar(50) ,
+create table product(product_Id integer primary key ,
+					product_Name varchar(50) ,
+					product_Discription varchar(100) ,
 					category varchar(50) , 
-					sub_category varchar(50) , 
-					qty_in_hand integer , 
-					p_cost DOUBLE PRECISION , 
-					p_price DOUBLE PRECISION );
+					sub_sategory varchar(100) , 
+					qty_in_hand varchar(100) , 
+					product_Cost varchar(100) , 
+					product_Price varchar(100) );
+                    
+// DDL command for creating customer table
+create table Customer(customer_Id integer primary key ,
+					first_Name varchar(50) ,
+					middle_Name varchar(50),
+					last_Name varchar(50),
+					gender varchar(50),
+					date_ofBirth Date ,
+					mobile_number integer , 
+					email_address varchar(50) , 
+					address varchar(100) , 
+					city varchar(50) , 
+					zipcode integer,
+					 state varchar(50));
 
-// DDL command for creating Customer table
-
-create table Customer(c_id integer primary key ,
-					c_first_name varchar(50) ,
-					c_middle_name varchar(50),
-					c_last_name varchar(50),
-					c_DOB Date ,
-					c_mobile_number integer , 
-					c_email_address varchar(50) , 
-					c_address varchar(100) , 
-					c_city varchar(50) , 
-					c_zipcode integer,
-					 c_state varchar(50));
-
-// DDL command for creating Customer_Order table
-
-create table Customer_Order(o_id integer primary key ,
-					p_id integer references product(p_id) ,
-					c_id integer references Customer(c_id),
-					o_date date,
+// DDL command for creating customer_order table
+create table customer_Order(order_Id integer primary key ,
+					product_Id integer references product(product_Id) ,
+					ccustomer_Id integer references Customer(customer_Id),
+					orderDate date,
 					total_item integer ,
 					total_price double precision , 
 					payment_method varchar(50) );
-                    
-//DDL command for creating Shipment_order table
 
+// DDL command for creating orderShipment table
 CREATE TABLE IF NOT EXISTS public.order_shipment
 (
     shipment_id integer NOT NULL,
-    o_id integer,
-    c_id integer,
+    order_Id integer references customer_Order(order_Id),
+    customer_Id integer references Customer(customer_Id),
     dispatch_date date,
-    order_status character varying(50) COLLATE pg_catalog."default",
-    received_date date,
-    CONSTRAINT order_shipment_c_id_fkey FOREIGN KEY (c_id)
-        REFERENCES public.customer (c_id) MATCH SIMPLE
-        ON UPDATE NO ACTION
-        ON DELETE NO ACTION,
-    CONSTRAINT order_shipment_o_id_fkey FOREIGN KEY (o_id)
-        REFERENCES public.customer_order (o_id) MATCH SIMPLE
-        ON UPDATE NO ACTION
-        ON DELETE NO ACTION
-)
+    order_status character varying(50) ,
+    received_date date);
