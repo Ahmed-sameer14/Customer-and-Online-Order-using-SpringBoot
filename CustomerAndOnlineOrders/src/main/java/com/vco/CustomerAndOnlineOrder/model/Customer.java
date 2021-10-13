@@ -6,7 +6,6 @@ import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -14,20 +13,13 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import lombok.AllArgsConstructor;
+
 import lombok.Data;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
 
-//this is the master class which doesn't contain any foreign key
+//This is the master class which doesn't contain any foreign key
 
-//@Data
-@Entity											
-//@AllArgsConstructor							//lombok annotations used to avoiding the boiler codes
-//@Getter
-//@Setter
-//@NoArgsConstructor
+@Data		//lombok annotations used to avoiding the boiler codes like getters, setters and constructors
+@Entity					
 @Table(name = "customer")			//mapping the name with data base table
 public class Customer implements Serializable  // Annotation that can be used to either suppress serialization of
 												// properties (during serialization), or ignore processing of
@@ -80,116 +72,5 @@ public class Customer implements Serializable  // Annotation that can be used to
 	@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
     private Set<Orders> order;
 	
-//	@OneToOne
-//    private Shipment shipment;
-	
-	public Customer() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
 
-	public int getCustomerId() {
-		return customerId;
-	}
-
-	public void setCustomerId(int customerId) {
-		this.customerId = customerId;
-	}
-
-	public String getFirstName() {
-		return firstName;
-	}
-
-	public void setFirstName(String firstName) {
-		this.firstName = firstName;
-	}
-
-	public String getMiddleName() {
-		return middleName;
-	}
-
-	public void setMiddleName(String middleName) {
-		this.middleName = middleName;
-	}
-
-	public String getLastName() {
-		return lastName;
-	}
-
-	public void setLastName(String lastName) {
-		this.lastName = lastName;
-	}
-
-	public Date getDob() {
-		return dob;
-	}
-
-	public void setDob(Date dob) {
-		this.dob = dob;
-	}
-
-	public String getGender() {
-		return gender;
-	}
-
-	public void setGender(String gender) {
-		this.gender = gender;
-	}
-
-	public long getMobile_number() {
-		return mobile_number;
-	}
-
-	public void setMobile_number(long mobile_number) {
-		this.mobile_number = mobile_number;
-	}
-
-	public String getEmail_address() {
-		return email_address;
-	}
-
-	public void setEmail_address(String email_address) {
-		this.email_address = email_address;
-	}
-
-	public String getHome_address() {
-		return home_address;
-	}
-
-	public void setHome_address(String home_address) {
-		this.home_address = home_address;
-	}
-
-	public String getCity() {
-		return city;
-	}
-
-	public void setCity(String city) {
-		this.city = city;
-	}
-
-	public int getZipcode() {
-		return zipcode;
-	}
-
-	public void setZipcode(int zipcode) {
-		this.zipcode = zipcode;
-	}
-
-	public String getState() {
-		return state;
-	}
-
-	public void setState(String state) {
-		this.state = state;
-	}
-
-	public Set<Orders> getOrder() {
-		return order;
-	}
-
-	public void setOrder(Set<Orders> order) {
-		this.order = order;
-	}
-	
 }

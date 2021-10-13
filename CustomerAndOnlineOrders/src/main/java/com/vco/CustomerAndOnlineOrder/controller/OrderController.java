@@ -9,7 +9,7 @@ import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.http.HttpStatus;
+//import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -21,10 +21,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.vco.CustomerAndOnlineOrder.exception.ResourceNotFoundException;
-import com.vco.CustomerAndOnlineOrder.model.Customer;
+//import com.vco.CustomerAndOnlineOrder.model.Customer;
 import com.vco.CustomerAndOnlineOrder.model.Orders;
 import com.vco.CustomerAndOnlineOrder.payload.PayLoadOrder;
-import com.vco.CustomerAndOnlineOrder.payload.ResponsePayLoad;
+//import com.vco.CustomerAndOnlineOrder.payload.ResponsePayLoad;
 import com.vco.CustomerAndOnlineOrder.repository.OrderRepository;
 
 /*in this class i am trying to perform the crud operation which the ManytoOne relationship
@@ -104,5 +104,4 @@ public class OrderController {
     		        response.put("deleted", Boolean.TRUE);
     		        return response;
     }
-
 }

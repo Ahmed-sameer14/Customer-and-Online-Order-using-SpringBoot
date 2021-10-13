@@ -13,6 +13,8 @@ public interface OrderRepository extends JpaRepository<Orders, Integer>{
 
 	Optional<Orders> findById(Integer orderId);
 
+	void saveAndFlush(Integer order);
+
 //	List<Orders> findByProducttId(Long productId);
 
 }

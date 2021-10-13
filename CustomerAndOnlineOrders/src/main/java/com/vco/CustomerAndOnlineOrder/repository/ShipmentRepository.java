@@ -7,6 +7,8 @@ import com.vco.CustomerAndOnlineOrder.model.Shipment;
 @Repository
 public interface ShipmentRepository extends JpaRepository<Shipment, Integer>{
 
+	void saveAndFlush(Integer shipment);
+
 }
 
 /*in this shipmentRepo interface i am extende jpa repository

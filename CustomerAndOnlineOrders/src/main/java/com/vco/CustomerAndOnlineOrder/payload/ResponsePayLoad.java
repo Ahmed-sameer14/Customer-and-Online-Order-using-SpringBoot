@@ -1,15 +1,8 @@
 package com.vco.CustomerAndOnlineOrder.payload;
 
-import java.util.List;
-
-import javax.persistence.criteria.Order;
-
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.vco.CustomerAndOnlineOrder.model.Orders;
 
-import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
 @Data
 //@AllArgsConstructor

@@ -1,6 +1,8 @@
 package com.vco.CustomerAndOnlineOrder.controller;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 import javax.validation.Valid;
@@ -16,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.vco.CustomerAndOnlineOrder.exception.NotFoundException;
+import com.vco.CustomerAndOnlineOrder.exception.ResourceNotFoundException;
 import com.vco.CustomerAndOnlineOrder.model.Shipment;
 import com.vco.CustomerAndOnlineOrder.repository.ShipmentRepository;
 
@@ -63,11 +66,14 @@ public class ShipmentController {
     }
     
     @DeleteMapping("/shipment/{id}")	//this delete method is use for deleting one perticuler record from the database
-    public String deleteShipment(@PathVariable Integer id) {
-        return shipmentRepository.findById(id)
-                .map(shipment -> {
-                	shipmentRepository.delete(shipment);
-                    return "Delete Successfully!";
-                }).orElseThrow(() -> new NotFoundException("shipment not found with id " + id));
+    public Map<String, Boolean> deleteShipment(
+        @PathVariable(value = "id") Integer shipmentId) throws Exception {
+        Shipment shipment = shipmentRepository.findById(shipmentId)
+           .orElseThrow(() -> new ResourceNotFoundException("shipment not found on :: "+ shipmentId));
+
+        shipmentRepository.delete(shipment);
+        Map<String, Boolean> response = new HashMap<>();
+        response.put("deleted", Boolean.TRUE);
+        return response;
     }
 }

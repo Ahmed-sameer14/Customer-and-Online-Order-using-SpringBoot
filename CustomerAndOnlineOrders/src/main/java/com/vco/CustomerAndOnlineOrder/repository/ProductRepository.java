@@ -13,6 +13,8 @@ public interface ProductRepository extends JpaRepository<Product, Integer>{
 		return null;
 	}
 
+	void saveAndFlush(Integer id);
+
 //	boolean existsById(Product productId);
 
 }

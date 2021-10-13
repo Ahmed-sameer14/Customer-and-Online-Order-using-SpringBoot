@@ -1,17 +1,13 @@
 package com.vco.CustomerAndOnlineOrder.payload;
 
 import java.io.Serializable;
-import java.sql.Date;
-import java.util.Set;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.vco.CustomerAndOnlineOrder.model.Orders;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 
 //this class is connected with orderservice class
 
@@ -23,6 +19,10 @@ import lombok.Setter;
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"}) 
 public class PayLoadOrder implements Serializable
 {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private Integer productId;			//this class is directaly connected with order service here i am getting the fk of productId and customerId
 	private Integer customerId;
 	private Orders order;
